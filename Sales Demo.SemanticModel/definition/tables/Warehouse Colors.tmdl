@@ -1,0 +1,73 @@
+table 'Warehouse Colors'
+	lineageTag: c3f3e764-c555-4a5e-b997-4bacca4ece6a
+
+	column ColorID
+		dataType: int64
+		formatString: 0
+		lineageTag: d51e3d58-3023-41a2-ac9e-892cb67d49a6
+		summarizeBy: none
+		sourceColumn: ColorID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ColorName
+		dataType: string
+		lineageTag: 9f780ab4-db24-4067-ac29-11176b9a3ecf
+		summarizeBy: none
+		sourceColumn: ColorName
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column LastEditedBy
+		dataType: int64
+		formatString: 0
+		lineageTag: f261b036-1e80-43a3-97d6-33522dc1339b
+		summarizeBy: sum
+		sourceColumn: LastEditedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValidFrom
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: fe3f6882-262b-4790-ad99-113bd330b9fb
+		summarizeBy: none
+		sourceColumn: ValidFrom
+
+		variation Variation
+			isDefault
+			relationship: f31204d0-1f56-48b3-b8b8-11448ad5dff2
+			defaultHierarchy: LocalDateTable_06395434-e58b-46be-beec-65ef85bd9932.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValidTo
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7bed1a7e-27bd-4c5c-8b40-2669a93b2032
+		summarizeBy: none
+		sourceColumn: ValidTo
+
+		variation Variation
+			isDefault
+			relationship: 0ebfa358-9300-4e74-88ee-a5bce3b7eb61
+			defaultHierarchy: LocalDateTable_89527a03-be89-44a7-af3e-4a582f15b11e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Warehouse Colors-d3d86fba-3982-46ea-8834-ada9c28fd353' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("bielitetraining.database.windows.net"),
+				    WideWorldImporters = Source{[Name="WideWorldImporters"]}[Data],
+				    Warehouse_Colors = WideWorldImporters{[Schema="Warehouse",Item="Colors"]}[Data]
+				in
+				    Warehouse_Colors
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,7 @@
+role RLS_Role
+	modelPermission: read
+
+	tablePermission RLS = RLS[Mail] = USERPRINCIPALNAME()
+
+	annotation PBI_Id = cfef9cb9a1a042fdbd36800ef1096da9
+

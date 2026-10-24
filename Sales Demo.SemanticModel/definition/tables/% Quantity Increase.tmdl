@@ -1,0 +1,23 @@
+table '% Quantity Increase'
+	lineageTag: 589e315f-db87-462f-b473-06623dff648d
+
+	measure '% Quantity Increase Value' = SELECTEDVALUE('% Quantity Increase'[% Quantity Increase])
+		lineageTag: e7b6b96c-5f0d-4cb5-b7a7-758dfc64551b
+
+	column '% Quantity Increase'
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: aa3287a3-c6dd-466e-be3e-a8a85cb3028f
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition '% Quantity Increase-7f894da2-8174-429c-98d9-3fcba09ed540' = calculated
+		mode: import
+		source = GENERATESERIES(0, 1, 0.01)
+

@@ -1,0 +1,7 @@
+role 'Supermarket Manager'
+	modelPermission: read
+
+	tablePermission Categories = [CustomerCategoryName] == "Supermarket"
+
+	annotation PBI_Id = d438e9502ebf40b2a001644ffce72764
+

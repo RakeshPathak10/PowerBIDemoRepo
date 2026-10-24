@@ -1,0 +1,285 @@
+table ' Measures'
+	lineageTag: 0887f650-1053-4007-a79d-554d609f0a5c
+
+	measure 'Count of Orders' = COUNT('Sales Orders'[OrderID])
+		formatString: 0
+		lineageTag: 64465dbc-b77c-4408-8811-9c9891b954fe
+
+	measure 'Orders (Exp Delivery Date)' =
+			
+			CALCULATE(
+			    [Count of Orders],
+			    USERELATIONSHIP('Date'[Date],'Sales Orders'[ExpectedDeliveryDate])
+			)
+		formatString: 0
+		lineageTag: dbef0625-923c-49ba-b768-e9f43bd62ea8
+
+	measure 'Orders (2015)' =
+			
+			CALCULATE(
+			    COUNT('Sales Orders'[OrderID]),
+			    ALL('Date'),
+			    'Date'[Year] = 2015
+			)
+		formatString: #,0
+		lineageTag: d18f8258-55cf-4483-9b0d-4b8d1fdf9cf0
+
+	measure 'Orders (2014)' =
+			
+			CALCULATE(
+			    COUNT('Sales Orders'[OrderID]),
+			    ALL('Date'),
+			    'Date'[Year] = 2014
+			)
+		formatString: #,0
+		lineageTag: fd9e6089-e731-4f02-a86c-f234e8563a16
+
+	measure 'Quanity (2015)' =
+			
+			CALCULATE(
+			    SUM('Sales OrderLines'[Quantity]),
+			    ALL('Date'),
+			    'Date'[Year] = 2015
+			)
+		formatString: #,0
+		lineageTag: fa9b4735-73d2-4846-8380-a70ffbe46823
+
+	measure 'Quanity (2014)' =
+			
+			CALCULATE(
+			    SUM('Sales OrderLines'[Quantity]),
+			    ALL('Date'),
+			    'Date'[Year] = 2014
+			)
+		formatString: #,0
+		lineageTag: 702bd2d2-8b3b-4e84-a0a7-8b085412edbe
+
+	measure 'Sales (2014)' =
+			
+			CALCULATE(
+			    SUMX('Sales OrderLines','Sales OrderLines'[UnitPrice] * 'Sales OrderLines'[Quantity]),
+			    ALL('Date'),
+			    'Date'[Year] = 2014
+			)
+		lineageTag: 93e21037-bef0-4d1c-aa18-951a2778b267
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales (2015)' =
+			
+			CALCULATE(
+			    SUMX('Sales OrderLines','Sales OrderLines'[UnitPrice] * 'Sales OrderLines'[Quantity]),
+			    ALL('Date'),
+			    'Date'[Year] = 2015
+			)
+		lineageTag: 07b70859-7aab-450f-8c97-c357503b6543
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Customers (2014)' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT('Sales Orders'[CustomerID]),
+			    ALL('Date'),
+			    'Date'[Year] = 2014
+			)
+		formatString: 0
+		lineageTag: 27d681d2-16a1-4729-a01f-117caa3a3a28
+
+	measure 'Customers (2015)' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT('Sales Orders'[CustomerID]),
+			    ALL('Date'),
+			    'Date'[Year] = 2015
+			)
+		formatString: 0
+		lineageTag: f3df6d6b-6561-4536-8f9b-930ebe2b437d
+
+	measure 'Total Sales' =
+			
+			SUMX('Sales OrderLines', 'Sales OrderLines'[UnitPrice] * 'Sales OrderLines'[Quantity])
+		formatString: #,0.00
+		lineageTag: 40775cc5-382e-4b32-85fb-154ca7ebd10a
+
+	measure 'Sales Running Total' =
+			
+			CALCULATE(
+			    [Total Sales],
+			    FILTER(
+			        ALLSELECTED('Date'[Date]),
+			        'Date'[Date] <= MAX('Date'[Date])
+			    )
+			)
+		lineageTag: afcd039f-cd6b-491c-87a3-89cd48f21b26
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% Change (Sales)' =
+			
+			DIVIDE([Sales (2015)] - [Sales (2014)], [Sales (2014)])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: a1f4a855-2816-4702-aaec-2a291ad8b6d2
+
+	measure '% Change Color' =
+			
+			SWITCH(
+			    TRUE(),
+			    [% Change (Sales)] < -0.1, "#FF0000",
+			    [% Change (Sales)] <= 0.1, "#CCCC00",
+			    [% Change (Sales)] > 0.1, "#228B22"
+			)
+		lineageTag: e7594486-569f-4d35-bd8e-39b30179e14c
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Table Title' =
+			
+			DISTINCTCOUNT(Cities[CityName]) & " Cities in Current Selection"
+		lineageTag: 10db7cb4-ef6b-4181-a5d7-b53bac05d698
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Increased Sales Volume' = ```
+			
+			SUMX(
+			    'Sales OrderLines', 
+			    ('Sales OrderLines'[UnitPrice] * 'Sales OrderLines'[Quantity]) + ('Sales OrderLines'[UnitPrice] * 'Sales OrderLines'[Quantity] * '% Quantity Increase'[% Quantity Increase Value])
+			)
+			```
+		formatString: #,0
+		lineageTag: 51cc7c8e-66c3-4b90-80cf-0da7593124fd
+
+	measure 'Average Unit Price' =
+			
+			AVERAGE('Sales OrderLines'[UnitPrice])
+		lineageTag: 1b76cff0-6319-44b4-a16f-c30c2fbb1046
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Matrix Title' =
+			
+			SWITCH(
+			    TRUE(),
+			    COUNT(Categories[CustomerCategoryName]) > 1, "Multiple Categories Selected",
+			    MAX(Categories[CustomerCategoryName])
+			)
+		lineageTag: 66e023c3-ad24-437a-acf4-758ddfe28595
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Sales Volume Difference' =
+			
+			[Increased Sales Volume] - [Total Sales]
+		formatString: #,0
+		lineageTag: 8d6c46d4-1265-47a6-95cb-8312460c6a59
+
+	measure 'Order ID Display' =
+			
+			[Count of Orders] & " Orders"
+		lineageTag: fd877df7-6402-46bc-9d39-31c0dea4756a
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Increased Quantity' =
+			
+			[Quantity] + ([Quantity] * '% Quantity Increase'[% Quantity Increase Value])
+		lineageTag: add59c68-f5f9-42d0-be0b-3fda876bec87
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Quantity =
+			
+			SUM('Sales OrderLines'[Quantity])
+		formatString: #,0
+		lineageTag: 8042ff1c-8928-487d-a2ff-455dc9ce1c85
+
+	measure 'Quantity Difference' =
+			
+			[Increased Quantity] - [Quantity]
+		lineageTag: a35e7a5e-cea0-4b7d-a90a-8144dddc6c1d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '7 Day Rolling Average' =
+			
+			AVERAGEX(
+			    DATESBETWEEN('Sales Orders'[OrderDate],MAX('Sales Orders'[OrderDate])-7,MAX('Sales Orders'[OrderDate])),
+			    CALCULATE(SUMX('Sales OrderLines', 'Sales OrderLines'[UnitPrice] * 'Sales OrderLines'[Quantity]))
+			)
+		lineageTag: 1e0fb4a0-0b28-424f-8eb6-cf4d405d7851
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '28 Day Rolling Average' =
+			
+			AVERAGEX(
+			    DATESBETWEEN('Sales Orders'[OrderDate],MAX('Sales Orders'[OrderDate])-28,MAX('Sales Orders'[OrderDate])),
+			    CALCULATE(SUMX('Sales OrderLines', 'Sales OrderLines'[UnitPrice] * 'Sales OrderLines'[Quantity]))
+			)
+		lineageTag: eadedc77-be63-4f1a-88de-a83f98da100b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '90 Day Rolling Average' =
+			
+			AVERAGEX(
+			    DATESBETWEEN('Sales Orders'[OrderDate],MAX('Sales Orders'[OrderDate])-90,MAX('Sales Orders'[OrderDate])),
+			    CALCULATE(SUMX('Sales OrderLines', 'Sales OrderLines'[UnitPrice] * 'Sales OrderLines'[Quantity]))
+			)
+		lineageTag: 7a72c3b6-8b62-4f3c-8fe1-2cda81474b56
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '7 Day Rolling Average - Quantity' =
+			
+			AVERAGEX(
+			    DATESBETWEEN('Sales Orders'[OrderDate],MAX('Sales Orders'[OrderDate])-7,MAX('Sales Orders'[OrderDate])),
+			    CALCULATE([Quantity])
+			)
+		lineageTag: f88cdfe9-9d83-4067-a42a-318043f14716
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '28 Day Rolling Average - Quantity' =
+			
+			AVERAGEX(
+			    DATESBETWEEN('Sales Orders'[OrderDate],MAX('Sales Orders'[OrderDate])-28,MAX('Sales Orders'[OrderDate])),
+			    CALCULATE([Quantity])
+			)
+		lineageTag: 2d0c1927-ac3c-4e6c-b301-57a52c59286d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '90 Day Rolling Average - Quantity' =
+			
+			AVERAGEX(
+			    DATESBETWEEN('Sales Orders'[OrderDate],MAX('Sales Orders'[OrderDate])-90,MAX('Sales Orders'[OrderDate])),
+			    CALCULATE([Quantity])
+			)
+		lineageTag: 5c7b6e58-a882-45d0-a057-0c3f9010e5a0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Flow URL' =
+			
+			"https://prod-93.westus.logic.azure.com:443/workflows/9d69e2068b7c4269ad42074ac222ed38/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=CjjufuhbUailUy7Q2BSlU-htzKfDPD2qaBbmmaXlKgo&users="
+			&
+			USERPRINCIPALNAME()
+		lineageTag: a57e3d23-cf78-418d-9d58-7430aa955c3b
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column Value
+		formatString: 0
+		lineageTag: 1ba91507-d0ae-48f0-811c-d1c88a83a950
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ' Measures-0ba62a4a-2650-4084-b8e9-45ee8a4fecc5' = calculated
+		mode: import
+		source = {BLANK()}
+

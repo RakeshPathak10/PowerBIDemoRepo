@@ -1,0 +1,143 @@
+relationship 216407dd-6b2c-4f46-a341-6d84a18b2b3f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Sales Customers'.AccountOpenedDate
+	toColumn: LocalDateTable_b7443634-2331-403f-8ea7-32a3e7afbb4c.Date
+
+relationship 83e6360d-3ad1-4c85-ac73-c9c48cc1c319
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Sales Customers'.ValidFrom
+	toColumn: LocalDateTable_43c130d1-1f02-43c8-bcbc-32fe14a41a88.Date
+
+relationship 4edf8293-bc9b-491b-89d7-2c15afc88427
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Sales Customers'.ValidTo
+	toColumn: LocalDateTable_91b661f5-3dc9-41a9-8501-68f2dd5cd02d.Date
+
+relationship eda40889-d7e3-4a23-b0ed-db906f9c9437
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Sales Orders'.PickingCompletedWhen
+	toColumn: LocalDateTable_a625ff0f-0805-4a48-aaa9-51c33ea4b7f5.Date
+
+relationship 8975ad4a-e0a1-4524-947f-e738e56764f4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Sales Orders'.LastEditedWhen
+	toColumn: LocalDateTable_ee3f309b-e294-4289-94df-6a1323f95f6a.Date
+
+relationship ded93639-4e50-4e22-b741-21e644626862
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Sales OrderLines'.PickingCompletedWhen
+	toColumn: LocalDateTable_01224111-24a1-403c-a42a-92bdc92f679c.Date
+
+relationship c3d6ca0f-c6db-4bb5-ba5b-52d42dddbfca
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Sales OrderLines'.LastEditedWhen
+	toColumn: LocalDateTable_773bd4d0-4504-42cd-98a5-958becbf020b.Date
+
+relationship 7d5c50e2-2e43-42dc-be7e-e6f254801ce5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Warehouse StockItems'.ValidFrom
+	toColumn: LocalDateTable_56378af3-efc6-4b50-841f-99fab6c77023.Date
+
+relationship 985e2ac8-e9e4-49b5-ae95-f8eeb896070e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Warehouse StockItems'.ValidTo
+	toColumn: LocalDateTable_f558f949-18c4-491e-8416-d9cdee62163e.Date
+
+relationship f2a180c6-c004-475e-a430-bc0b1b207f34
+	fromColumn: 'Sales Orders'.CustomerID
+	toColumn: 'Sales Customers'.CustomerID
+
+relationship a373e6ad-ddc5-4feb-864a-819445af3211
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Sales OrderLines'.OrderID
+	toColumn: 'Sales Orders'.OrderID
+
+relationship 1ac11044-478c-4670-a09e-6e6a2825a4e9
+	fromColumn: 'Sales OrderLines'.StockItemID
+	toColumn: 'Warehouse StockItems'.StockItemID
+
+relationship f71c92b1-c171-4cb0-bfe1-06f5a35e6b16
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Categories.ValidFrom
+	toColumn: LocalDateTable_b6d5fa07-daa3-4c1a-b66e-784e9fb807de.Date
+
+relationship 5b6b87d0-e8ee-429c-97f4-b1935fa70f41
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Categories.ValidTo
+	toColumn: LocalDateTable_481a1467-fc11-4bd8-a0b0-4eef7ba42e95.Date
+
+relationship 581878cb-99ce-4af8-a3fa-a6aa6c92e786
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Cities.ValidFrom
+	toColumn: LocalDateTable_19a141f1-4c72-46dd-a170-ad2c2bc13f40.Date
+
+relationship eeb7c8a2-dbf2-464a-8c62-222539689039
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Cities.ValidTo
+	toColumn: LocalDateTable_89b60d86-27f6-4fa1-bcea-0b3a0cd44835.Date
+
+relationship 46633e36-0a1e-470f-a5bf-f731a3291d13
+	fromColumn: 'Sales Customers'.CustomerCategoryID
+	toColumn: Categories.CustomerCategoryID
+
+relationship 14640d10-8f7c-4aa8-85d0-30a1beb1d04f
+	fromColumn: 'Sales Customers'.DeliveryCityID
+	toColumn: Cities.CityID
+
+relationship c063a4d0-b2ab-46a2-baa9-79b07240f5d6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: States.ValidFrom
+	toColumn: LocalDateTable_16b312f2-a596-4dd9-b43a-305500db48e7.Date
+
+relationship 8849493f-7b09-4105-9c0b-1e071a1f1796
+	joinOnDateBehavior: datePartOnly
+	fromColumn: States.ValidTo
+	toColumn: LocalDateTable_5d910bf3-a894-41e3-be37-e5ffe52ef199.Date
+
+relationship e81d368f-5d89-4c1c-a118-70c7c9295ff5
+	fromColumn: Cities.StateProvinceID
+	toColumn: States.StateProvinceID
+
+relationship 947b712d-5921-495e-b793-73756af52535
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Date.Date
+	toColumn: LocalDateTable_0ee808ef-f0f0-40c7-a8b3-41dcf65de916.Date
+
+relationship b59a6c2f-f50f-490b-bedd-17fafe978a22
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Date.'Start of Week'
+	toColumn: LocalDateTable_271cf411-aa3d-42af-b8fe-561b4ca363c2.Date
+
+relationship 326c8c6d-b171-40de-ae06-42c94f93936c
+	fromColumn: 'Sales Orders'.OrderDate
+	toColumn: Date.Date
+
+relationship 4b2af079-4d9c-463b-9310-f03f71cb1a1e
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Countries.StateProvinceID
+	toColumn: States.StateProvinceID
+
+relationship 9968e7fd-5405-4101-9a2b-eb6cb9ba3285
+	isActive: false
+	fromColumn: 'Sales Orders'.ExpectedDeliveryDate
+	toColumn: Date.Date
+
+relationship f31204d0-1f56-48b3-b8b8-11448ad5dff2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Warehouse Colors'.ValidFrom
+	toColumn: LocalDateTable_06395434-e58b-46be-beec-65ef85bd9932.Date
+
+relationship 0ebfa358-9300-4e74-88ee-a5bce3b7eb61
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Warehouse Colors'.ValidTo
+	toColumn: LocalDateTable_89527a03-be89-44a7-af3e-4a582f15b11e.Date
+
+relationship 9be07bf1-34a4-4a49-9e8a-a799feb691f1
+	fromColumn: 'Warehouse StockItems'.ColorID
+	toColumn: 'Warehouse Colors'.ColorID
+
+relationship f8862977-3b84-e7e3-4dc7-942a694f4664
+	fromColumn: States.SalesTerritory
+	toColumn: RLS.'Sales Territory'
+

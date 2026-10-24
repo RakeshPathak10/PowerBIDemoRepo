@@ -1,0 +1,75 @@
+table Categories
+	lineageTag: 8dee26a4-1742-4be7-8551-7bdabae58868
+
+	column CustomerCategoryID
+		dataType: int64
+		formatString: 0
+		lineageTag: 7d3d0a4a-5d99-48e6-871d-680ba8045005
+		summarizeBy: none
+		sourceColumn: CustomerCategoryID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerCategoryName
+		dataType: string
+		lineageTag: 09b5bd19-5dd1-4a71-ab4e-87ad3c8104e6
+		summarizeBy: none
+		sourceColumn: CustomerCategoryName
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column LastEditedBy
+		dataType: int64
+		formatString: 0
+		lineageTag: 8db38846-7cb6-4364-84f7-6378a7f0fdb4
+		summarizeBy: sum
+		sourceColumn: LastEditedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValidFrom
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 12ae6a73-b614-407d-8d08-e38477f23fca
+		summarizeBy: none
+		sourceColumn: ValidFrom
+
+		variation Variation
+			isDefault
+			relationship: f71c92b1-c171-4cb0-bfe1-06f5a35e6b16
+			defaultHierarchy: LocalDateTable_b6d5fa07-daa3-4c1a-b66e-784e9fb807de.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValidTo
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0e459925-d26f-4a55-a229-c076704c04d5
+		summarizeBy: none
+		sourceColumn: ValidTo
+
+		variation Variation
+			isDefault
+			relationship: 5b6b87d0-e8ee-429c-97f4-b1935fa70f41
+			defaultHierarchy: LocalDateTable_481a1467-fc11-4bd8-a0b0-4eef7ba42e95.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Categories-e0427b26-e915-4cbc-be23-e6b7451fff3a = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("bielitetraining.database.windows.net"),
+				    WideWorldImporters = Source{[Name="WideWorldImporters"]}[Data],
+				    Sales_CustomerCategories = WideWorldImporters{[Schema="Sales",Item="CustomerCategories"]}[Data]
+				in
+				    Sales_CustomerCategories
+
+	annotation PBI_QueryRelationships = {"columnCount":5,"keyColumnNames":["CustomerCategoryID"],"queryRelationships":[{"keyColumnCount":1,"keyColumn":2,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.People.{PersonID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{CustomerCategoryID,3}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.SpecialDeals.{CustomerCategoryID,4}","KeyColumnCount":1}],"columnIdentities":["Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.CustomerCategories.{CustomerCategoryID,0}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.CustomerCategories.{CustomerCategoryName,1}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.CustomerCategories.{LastEditedBy,2}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.CustomerCategories.{ValidFrom,3}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.CustomerCategories.{ValidTo,4}"],"ColumnCount":5,"KeyColumnNames":["CustomerCategoryID"],"ColumnIdentities":["Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.CustomerCategories.{CustomerCategoryID,0}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.CustomerCategories.{CustomerCategoryName,1}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.CustomerCategories.{LastEditedBy,2}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.CustomerCategories.{ValidFrom,3}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.CustomerCategories.{ValidTo,4}"],"RelationshipInfo":[{"keyColumnCount":1,"keyColumn":2,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.People.{PersonID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{CustomerCategoryID,3}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.SpecialDeals.{CustomerCategoryID,4}","KeyColumnCount":1}]}
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

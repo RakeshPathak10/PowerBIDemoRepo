@@ -1,0 +1,68 @@
+table Countries
+	lineageTag: db419a7d-e42d-4281-bbbf-382c62a55042
+
+	column StateProvinceID
+		dataType: int64
+		formatString: 0
+		lineageTag: 09caf073-ec6a-4210-91ea-319f173d440c
+		summarizeBy: none
+		sourceColumn: StateProvinceID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryName
+		dataType: string
+		lineageTag: f23d9bd5-aeca-474d-b29d-2c7e52f49ce6
+		summarizeBy: none
+		sourceColumn: CountryName
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column Continent
+		dataType: string
+		lineageTag: 42c1acb6-3dbc-4eff-8930-9008e33ec330
+		summarizeBy: none
+		sourceColumn: Continent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column Region
+		dataType: string
+		lineageTag: 8fd0a2ea-32b7-42ca-93df-b46d94e35132
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column Subregion
+		dataType: string
+		lineageTag: 4c3a1000-131a-49fd-99dc-418e3b2e67a1
+		summarizeBy: none
+		sourceColumn: Subregion
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	partition Countries-8968b2f3-cf7e-4f36-95b7-8ca0e9cbc353 = m
+		mode: import
+		source =
+				let
+				    Source = States,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"StateProvinceID", "Application.Countries"}),
+				    #"Expanded Application.Countries" = Table.ExpandRecordColumn(#"Removed Other Columns", "Application.Countries", {"CountryName", "Continent", "Region", "Subregion"}, {"CountryName", "Continent", "Region", "Subregion"})
+				in
+				    #"Expanded Application.Countries"
+
+	annotation PBI_QueryRelationships = {"columnCount":5,"keyColumnNames":[],"queryRelationships":[{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Cities.{StateProvinceID,2}","KeyColumnCount":1}],"columnIdentities":["Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.StateProvinces.{StateProvinceID,0}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Countries.{CountryName,1}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Countries.{Continent,7}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Countries.{Region,8}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Countries.{Subregion,9}"],"ColumnCount":5,"KeyColumnNames":[],"ColumnIdentities":["Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.StateProvinces.{StateProvinceID,0}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Countries.{CountryName,1}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Countries.{Continent,7}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Countries.{Region,8}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Countries.{Subregion,9}"],"RelationshipInfo":[{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Cities.{StateProvinceID,2}","KeyColumnCount":1}]}
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

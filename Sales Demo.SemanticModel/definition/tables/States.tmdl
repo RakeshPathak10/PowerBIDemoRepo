@@ -1,0 +1,123 @@
+table States
+	lineageTag: ae285d35-bb76-4b7e-8a42-29d4efc16a05
+
+	column StateProvinceID
+		dataType: int64
+		formatString: 0
+		lineageTag: f7cd91db-9bf2-4274-9a68-87f01c0d02d3
+		summarizeBy: none
+		sourceColumn: StateProvinceID
+
+		annotation SummarizationSetBy = Automatic
+
+	column StateProvinceCode
+		dataType: string
+		lineageTag: 71304cc7-8451-448d-bc96-b7028b979a71
+		summarizeBy: none
+		sourceColumn: StateProvinceCode
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column StateProvinceName
+		dataType: string
+		lineageTag: 1bd5d9c7-1cf8-4053-a3a7-5a60cb06baea
+		summarizeBy: none
+		sourceColumn: StateProvinceName
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column CountryID
+		dataType: int64
+		formatString: 0
+		lineageTag: f2ce1dbc-4ef3-48cd-88f9-1b52cd61a86b
+		summarizeBy: count
+		sourceColumn: CountryID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesTerritory
+		dataType: string
+		lineageTag: 7633991f-4942-4c62-9392-5f36b37dd662
+		summarizeBy: none
+		sourceColumn: SalesTerritory
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column Border
+		dataType: string
+		lineageTag: 42775577-c9cc-4503-bbb5-026549c346d4
+		summarizeBy: none
+		sourceColumn: Border
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column LatestRecordedPopulation
+		dataType: int64
+		formatString: 0
+		lineageTag: 645f78b3-162e-4e59-9e8a-7ce66841934b
+		summarizeBy: sum
+		sourceColumn: LatestRecordedPopulation
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastEditedBy
+		dataType: int64
+		formatString: 0
+		lineageTag: 97d760c5-788f-43b4-899c-9ca3f1079e33
+		summarizeBy: sum
+		sourceColumn: LastEditedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValidFrom
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: dbef4b6f-80f5-4924-b466-da4d25df8337
+		summarizeBy: none
+		sourceColumn: ValidFrom
+
+		variation Variation
+			isDefault
+			relationship: c063a4d0-b2ab-46a2-baa9-79b07240f5d6
+			defaultHierarchy: LocalDateTable_16b312f2-a596-4dd9-b43a-305500db48e7.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValidTo
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 611bb037-d33b-4683-8c3b-aecb7d817bf7
+		summarizeBy: none
+		sourceColumn: ValidTo
+
+		variation Variation
+			isDefault
+			relationship: 8849493f-7b09-4105-9c0b-1e071a1f1796
+			defaultHierarchy: LocalDateTable_5d910bf3-a894-41e3-be37-e5ffe52ef199.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition States-9d5a36bf-9eca-4235-86ea-4da4f32d1184 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("bielitetraining.database.windows.net"),
+				    WideWorldImporters = Source{[Name="WideWorldImporters"]}[Data],
+				    Application_StateProvinces = WideWorldImporters{[Schema="Application",Item="StateProvinces"]}[Data]
+				in
+				    Application_StateProvinces
+
+	annotation PBI_QueryRelationships = {"columnCount":10,"keyColumnNames":["StateProvinceID"],"queryRelationships":[{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Cities.{StateProvinceID,2}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":3,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Countries.{CountryID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":7,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.People.{PersonID,0}","KeyColumnCount":1}],"columnIdentities":["Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.StateProvinces.{StateProvinceID,0}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.StateProvinces.{StateProvinceCode,1}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.StateProvinces.{StateProvinceName,2}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.StateProvinces.{CountryID,3}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.StateProvinces.{SalesTerritory,4}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.StateProvinces.{Border,5}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.StateProvinces.{LatestRecordedPopulation,6}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.StateProvinces.{LastEditedBy,7}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.StateProvinces.{ValidFrom,8}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.StateProvinces.{ValidTo,9}"],"ColumnCount":10,"KeyColumnNames":["StateProvinceID"],"ColumnIdentities":["Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.StateProvinces.{StateProvinceID,0}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.StateProvinces.{StateProvinceCode,1}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.StateProvinces.{StateProvinceName,2}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.StateProvinces.{CountryID,3}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.StateProvinces.{SalesTerritory,4}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.StateProvinces.{Border,5}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.StateProvinces.{LatestRecordedPopulation,6}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.StateProvinces.{LastEditedBy,7}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.StateProvinces.{ValidFrom,8}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.StateProvinces.{ValidTo,9}"],"RelationshipInfo":[{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Cities.{StateProvinceID,2}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":3,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Countries.{CountryID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":7,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.People.{PersonID,0}","KeyColumnCount":1}]}
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

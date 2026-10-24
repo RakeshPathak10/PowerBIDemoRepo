@@ -1,0 +1,138 @@
+table 'Sales OrderLines'
+	lineageTag: 2df1f695-9245-47b1-a29f-75554991e079
+
+	column OrderLineID
+		dataType: int64
+		formatString: 0
+		lineageTag: 88d01769-cec8-4c8b-a55d-65a07fd06fbc
+		summarizeBy: count
+		sourceColumn: OrderLineID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderID
+		dataType: int64
+		formatString: 0
+		lineageTag: e0a8ebf5-a21c-420a-b8b7-ac691bd240b2
+		summarizeBy: none
+		sourceColumn: OrderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column StockItemID
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ac0f3c0-b1a6-4152-87ce-42719ac0a57b
+		summarizeBy: none
+		sourceColumn: StockItemID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: cc710fac-9bae-4f14-a7b7-373308dac3c4
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column PackageTypeID
+		dataType: int64
+		formatString: 0
+		lineageTag: b956920d-81c4-4eae-964d-0f0e0c707831
+		summarizeBy: count
+		sourceColumn: PackageTypeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		formatString: #,0
+		lineageTag: 8b44dd19-1dde-40d0-a98a-4074dc32e0f3
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitPrice
+		dataType: double
+		lineageTag: 6bd9f408-249f-4304-9a52-89b18ba843d4
+		summarizeBy: sum
+		sourceColumn: UnitPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxRate
+		dataType: double
+		lineageTag: 3e01e52e-e26d-4ec9-a645-ffcc7276624d
+		summarizeBy: sum
+		sourceColumn: TaxRate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PickedQuantity
+		dataType: int64
+		formatString: #,0
+		lineageTag: 58615dc2-9eb9-450f-8844-16cb6af3e06d
+		summarizeBy: sum
+		sourceColumn: PickedQuantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column PickingCompletedWhen
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c5a525c4-f87b-4991-977e-ca8773d6e3d5
+		summarizeBy: none
+		sourceColumn: PickingCompletedWhen
+
+		variation Variation
+			isDefault
+			relationship: ded93639-4e50-4e22-b741-21e644626862
+			defaultHierarchy: LocalDateTable_01224111-24a1-403c-a42a-92bdc92f679c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastEditedBy
+		dataType: int64
+		formatString: 0
+		lineageTag: ef103bd0-f38c-4120-9efe-c84a3e2f6ddf
+		summarizeBy: sum
+		sourceColumn: LastEditedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastEditedWhen
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d2631f65-573d-483f-9d09-dc48f0387c15
+		summarizeBy: none
+		sourceColumn: LastEditedWhen
+
+		variation Variation
+			isDefault
+			relationship: c3d6ca0f-c6db-4bb5-ba5b-52d42dddbfca
+			defaultHierarchy: LocalDateTable_773bd4d0-4504-42cd-98a5-958becbf020b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Sales OrderLines-5cf06df2-7dc7-4e0e-bdd4-78c88f99318e' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("bielitetraining.database.windows.net"),
+				    WideWorldImporters = Source{[Name="WideWorldImporters"]}[Data],
+				    Sales_OrderLines = WideWorldImporters{[Schema="Sales",Item="OrderLines"]}[Data]
+				in
+				    Sales_OrderLines
+
+	annotation PBI_QueryRelationships = {"columnCount":12,"keyColumnNames":["OrderLineID"],"queryRelationships":[{"keyColumnCount":1,"keyColumn":10,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.People.{PersonID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":1,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{OrderID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":4,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.PackageTypes.{PackageTypeID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":2,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{StockItemID,0}","KeyColumnCount":1}],"columnIdentities":["Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{OrderLineID,0}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{OrderID,1}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{StockItemID,2}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{Description,3}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{PackageTypeID,4}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{Quantity,5}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{UnitPrice,6}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{TaxRate,7}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{PickedQuantity,8}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{PickingCompletedWhen,9}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{LastEditedBy,10}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{LastEditedWhen,11}"],"ColumnCount":12,"KeyColumnNames":["OrderLineID"],"ColumnIdentities":["Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{OrderLineID,0}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{OrderID,1}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{StockItemID,2}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{Description,3}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{PackageTypeID,4}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{Quantity,5}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{UnitPrice,6}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{TaxRate,7}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{PickedQuantity,8}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{PickingCompletedWhen,9}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{LastEditedBy,10}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{LastEditedWhen,11}"],"RelationshipInfo":[{"keyColumnCount":1,"keyColumn":10,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.People.{PersonID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":1,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{OrderID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":4,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.PackageTypes.{PackageTypeID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":2,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{StockItemID,0}","KeyColumnCount":1}]}
+
+	annotation PBI_ResultType = Table
+

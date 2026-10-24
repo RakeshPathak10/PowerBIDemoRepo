@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "ReportSection08bd506455d07c589806",
+  "displayName": "# of Orders",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "pageBinding": {
+    "name": "Pod2",
+    "type": "Default",
+    "parameters": []
+  },
+  "visualInteractions": [
+    {
+      "source": "8f87da7151b18845736c",
+      "target": "6375c134ecdac9a88d27",
+      "type": "NoFilter"
+    },
+    {
+      "source": "8f87da7151b18845736c",
+      "target": "a9fac60500268622846c",
+      "type": "NoFilter"
+    },
+    {
+      "source": "8f87da7151b18845736c",
+      "target": "a0870b4150b8507f7708",
+      "type": "NoFilter"
+    },
+    {
+      "source": "8f87da7151b18845736c",
+      "target": "f40bb4ac40df8f6daa86",
+      "type": "NoFilter"
+    }
+  ]
+}

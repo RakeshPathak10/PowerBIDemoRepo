@@ -1,0 +1,179 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 1018.8492012980513,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 877.75039046107793,
+            "y": 584.66431653842722
+          },
+          "nodeIndex": "Sales Customers",
+          "size": {
+            "height": 337,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 271.52539163141228,
+            "y": 566.16099019648186
+          },
+          "nodeIndex": "Sales OrderLines",
+          "size": {
+            "height": 327,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 587.28259795384849,
+            "y": 564.83240048139464
+          },
+          "nodeIndex": "Sales Orders",
+          "size": {
+            "height": 337,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 59.791438077654981,
+            "y": 162.08369730260659
+          },
+          "nodeIndex": "Warehouse StockItems",
+          "size": {
+            "height": 337,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1261.5806675173649,
+            "y": 573.65330815308471
+          },
+          "nodeIndex": "Categories",
+          "size": {
+            "height": 194,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 965.2183639135967,
+            "y": 128.636355750908
+          },
+          "nodeIndex": "Cities",
+          "size": {
+            "height": 251,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1343.4279890948612,
+            "y": 180.974175641047
+          },
+          "nodeIndex": "States",
+          "nodeLineageTag": "ae285d35-bb76-4b7e-8a42-29d4efc16a05",
+          "size": {
+            "height": 321.51391156007742,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 629.190776634557,
+            "y": 84.23026403044824
+          },
+          "nodeIndex": "Date",
+          "size": {
+            "height": 213,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1583.1927874941991,
+            "y": 520.31491279819636
+          },
+          "nodeIndex": " Measures",
+          "size": {
+            "height": 194,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1666.650818031063,
+            "y": 75.070310801729818
+          },
+          "nodeIndex": "Countries",
+          "size": {
+            "height": 194,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2293.6339635665067,
+            "y": 0
+          },
+          "nodeIndex": "% Quantity Increase",
+          "size": {
+            "height": 213,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2599.7,
+            "y": 0
+          },
+          "nodeIndex": "Warehouse Colors",
+          "size": {
+            "height": 194,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1705.2271837856333,
+            "y": 324.21053051144895
+          },
+          "nodeIndex": "RLS",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 63.2870877232342,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

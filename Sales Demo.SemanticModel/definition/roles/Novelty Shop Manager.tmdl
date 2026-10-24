@@ -1,0 +1,7 @@
+role 'Novelty Shop Manager'
+	modelPermission: read
+
+	tablePermission Categories = [CustomerCategoryName] == "Novelty Shop"
+
+	annotation PBI_Id = 4a8a303917f549af858a2194ffcf9971
+

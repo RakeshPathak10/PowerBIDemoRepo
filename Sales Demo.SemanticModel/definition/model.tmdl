@@ -1,0 +1,55 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Sales Customers","Sales Orders","Sales OrderLines","Warehouse StockItems","Categories","Cities","States","Countries","Date","Warehouse Colors","RLS"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_6634ba7a-029e-440b-b922-d7ad7b8c932f
+ref table 'Sales Customers'
+ref table LocalDateTable_b7443634-2331-403f-8ea7-32a3e7afbb4c
+ref table LocalDateTable_43c130d1-1f02-43c8-bcbc-32fe14a41a88
+ref table LocalDateTable_91b661f5-3dc9-41a9-8501-68f2dd5cd02d
+ref table 'Sales Orders'
+ref table LocalDateTable_a625ff0f-0805-4a48-aaa9-51c33ea4b7f5
+ref table LocalDateTable_ee3f309b-e294-4289-94df-6a1323f95f6a
+ref table 'Sales OrderLines'
+ref table LocalDateTable_01224111-24a1-403c-a42a-92bdc92f679c
+ref table LocalDateTable_773bd4d0-4504-42cd-98a5-958becbf020b
+ref table 'Warehouse StockItems'
+ref table LocalDateTable_56378af3-efc6-4b50-841f-99fab6c77023
+ref table LocalDateTable_f558f949-18c4-491e-8416-d9cdee62163e
+ref table Categories
+ref table LocalDateTable_b6d5fa07-daa3-4c1a-b66e-784e9fb807de
+ref table LocalDateTable_481a1467-fc11-4bd8-a0b0-4eef7ba42e95
+ref table Cities
+ref table LocalDateTable_19a141f1-4c72-46dd-a170-ad2c2bc13f40
+ref table LocalDateTable_89b60d86-27f6-4fa1-bcea-0b3a0cd44835
+ref table States
+ref table LocalDateTable_16b312f2-a596-4dd9-b43a-305500db48e7
+ref table LocalDateTable_5d910bf3-a894-41e3-be37-e5ffe52ef199
+ref table Date
+ref table LocalDateTable_0ee808ef-f0f0-40c7-a8b3-41dcf65de916
+ref table LocalDateTable_271cf411-aa3d-42af-b8fe-561b4ca363c2
+ref table ' Measures'
+ref table Countries
+ref table '% Quantity Increase'
+ref table 'Warehouse Colors'
+ref table LocalDateTable_06395434-e58b-46be-beec-65ef85bd9932
+ref table LocalDateTable_89527a03-be89-44a7-af3e-4a582f15b11e
+ref table RLS
+
+ref role 'Supermarket Manager'
+ref role 'Novelty Shop Manager'
+ref role 'Global Admin'
+ref role RLS_Role
+
+ref cultureInfo en-US
+

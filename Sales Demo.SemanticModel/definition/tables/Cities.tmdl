@@ -1,0 +1,103 @@
+table Cities
+	lineageTag: e4551829-0fa6-4d3e-8216-38e529191d12
+
+	column CityID
+		dataType: int64
+		formatString: 0
+		lineageTag: 5ab564eb-1708-478f-9010-17d84260fdcf
+		summarizeBy: none
+		sourceColumn: CityID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CityName
+		dataType: string
+		lineageTag: 24033874-1788-4599-a99c-7d90144c1550
+		summarizeBy: none
+		sourceColumn: CityName
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column StateProvinceID
+		dataType: int64
+		formatString: 0
+		lineageTag: 28ecbe4d-e064-4560-97ff-e360c5aa1267
+		summarizeBy: none
+		sourceColumn: StateProvinceID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: ddf0f7bb-f888-4e7f-834d-b4f5cffa32f9
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column LatestRecordedPopulation
+		dataType: int64
+		formatString: 0
+		lineageTag: 26733b20-8c69-45ea-be90-ce7ade8b7062
+		summarizeBy: sum
+		sourceColumn: LatestRecordedPopulation
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastEditedBy
+		dataType: int64
+		formatString: 0
+		lineageTag: aea8a249-0bc3-4087-bf35-7683481ce7d4
+		summarizeBy: sum
+		sourceColumn: LastEditedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValidFrom
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: bca0c8b3-f785-4b20-b71b-c5dbe926fb8f
+		summarizeBy: none
+		sourceColumn: ValidFrom
+
+		variation Variation
+			isDefault
+			relationship: 581878cb-99ce-4af8-a3fa-a6aa6c92e786
+			defaultHierarchy: LocalDateTable_19a141f1-4c72-46dd-a170-ad2c2bc13f40.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValidTo
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7bd9889e-5528-4886-9911-ec341056d927
+		summarizeBy: none
+		sourceColumn: ValidTo
+
+		variation Variation
+			isDefault
+			relationship: eeb7c8a2-dbf2-464a-8c62-222539689039
+			defaultHierarchy: LocalDateTable_89b60d86-27f6-4fa1-bcea-0b3a0cd44835.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Cities-581c5d88-1658-4738-9b79-5e03fc98999b = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("bielitetraining.database.windows.net"),
+				    WideWorldImporters = Source{[Name="WideWorldImporters"]}[Data],
+				    Application_Cities = WideWorldImporters{[Schema="Application",Item="Cities"]}[Data]
+				in
+				    Application_Cities
+
+	annotation PBI_QueryRelationships = {"columnCount":8,"keyColumnNames":["CityID"],"queryRelationships":[{"keyColumnCount":1,"keyColumn":5,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.People.{PersonID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":2,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.StateProvinces.{StateProvinceID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.SystemParameters.{DeliveryCityID,3}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.SystemParameters.{PostalCityID,8}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Purchasing/Purchasing.Suppliers.{DeliveryCityID,6}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Purchasing/Purchasing.Suppliers.{PostalCityID,7}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{DeliveryCityID,8}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{PostalCityID,9}","KeyColumnCount":1}],"columnIdentities":["Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Cities.{CityID,0}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Cities.{CityName,1}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Cities.{StateProvinceID,2}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Cities.{Location,3}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Cities.{LatestRecordedPopulation,4}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Cities.{LastEditedBy,5}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Cities.{ValidFrom,6}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Cities.{ValidTo,7}"],"ColumnCount":8,"KeyColumnNames":["CityID"],"ColumnIdentities":["Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Cities.{CityID,0}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Cities.{CityName,1}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Cities.{StateProvinceID,2}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Cities.{Location,3}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Cities.{LatestRecordedPopulation,4}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Cities.{LastEditedBy,5}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Cities.{ValidFrom,6}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Cities.{ValidTo,7}"],"RelationshipInfo":[{"keyColumnCount":1,"keyColumn":5,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.People.{PersonID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":2,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.StateProvinces.{StateProvinceID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.SystemParameters.{DeliveryCityID,3}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.SystemParameters.{PostalCityID,8}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Purchasing/Purchasing.Suppliers.{DeliveryCityID,6}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Purchasing/Purchasing.Suppliers.{PostalCityID,7}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{DeliveryCityID,8}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{PostalCityID,9}","KeyColumnCount":1}]}
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

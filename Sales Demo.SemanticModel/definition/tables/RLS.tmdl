@@ -1,0 +1,32 @@
+table RLS
+	lineageTag: 23a81382-d829-40fe-ba5d-70dffeb6bc8b
+
+	column Mail
+		dataType: string
+		lineageTag: 964e6f45-d930-4140-929e-3fbabc121a77
+		summarizeBy: none
+		sourceColumn: Mail
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Territory'
+		dataType: string
+		lineageTag: 265f53e8-936d-48f2-a90f-eedec4e6efa6
+		summarizeBy: none
+		sourceColumn: Sales Territory
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RLS = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("Tco7DoAgEAXAq5itDWew0c7aglC8ZDeyKhSAqLf3Uzn1WEtYs8dlVjBCV4+Zs9FILfVnkRSxkWstVWj2EVXNAvao/zgqC3L53oI57UXNcwJ7SfKPA1IzyTvdDQ==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Mail = _t, #"Sales Territory" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Mail", type text}, {"Sales Territory", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

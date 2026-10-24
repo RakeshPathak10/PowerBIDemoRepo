@@ -1,0 +1,181 @@
+table 'Sales Orders'
+	lineageTag: e167f3ba-3667-49f4-91aa-12ff866f4401
+
+	column OrderID
+		dataType: int64
+		formatString: 0
+		lineageTag: 516d965a-3540-47cd-9ee2-7d82d1a5ca27
+		summarizeBy: none
+		sourceColumn: OrderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerID
+		dataType: int64
+		formatString: 0
+		lineageTag: 3dbde110-d880-4efc-8875-499e850be0e0
+		summarizeBy: none
+		sourceColumn: CustomerID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalespersonPersonID
+		dataType: int64
+		formatString: 0
+		lineageTag: daa0a94e-35b7-4be6-b9b7-f3e64c688f8d
+		summarizeBy: count
+		sourceColumn: SalespersonPersonID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PickedByPersonID
+		dataType: int64
+		formatString: 0
+		lineageTag: a383f2bc-ea22-4550-b502-7dfe61819583
+		summarizeBy: count
+		sourceColumn: PickedByPersonID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ContactPersonID
+		dataType: int64
+		formatString: 0
+		lineageTag: 11724362-1cfe-4511-969d-afdb474bcbcd
+		summarizeBy: count
+		sourceColumn: ContactPersonID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BackorderOrderID
+		dataType: int64
+		formatString: 0
+		lineageTag: b71a6bbd-32b2-44c1-b00c-78ea66bcfb03
+		summarizeBy: count
+		sourceColumn: BackorderOrderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cb42fe19-5a1c-417b-aa3e-65959c09f375
+		summarizeBy: none
+		sourceColumn: OrderDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ExpectedDeliveryDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e8645a3d-c6e0-4231-8527-c32fc662fcdd
+		summarizeBy: none
+		sourceColumn: ExpectedDeliveryDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CustomerPurchaseOrderNumber
+		dataType: string
+		lineageTag: 0a69070d-21ae-454b-b463-082a994f8785
+		summarizeBy: none
+		sourceColumn: CustomerPurchaseOrderNumber
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column IsUndersupplyBackordered
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5c082d3d-f7e5-4f6b-bc20-e5f6c372cd01
+		summarizeBy: none
+		sourceColumn: IsUndersupplyBackordered
+
+		annotation SummarizationSetBy = Automatic
+
+	column Comments
+		dataType: string
+		lineageTag: 598a7083-37f5-4d80-ae68-1f12cfb37ce9
+		summarizeBy: none
+		sourceColumn: Comments
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column DeliveryInstructions
+		dataType: string
+		lineageTag: 2949c3c3-e816-4d96-8c7f-888fc9fb242c
+		summarizeBy: none
+		sourceColumn: DeliveryInstructions
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column InternalComments
+		dataType: string
+		lineageTag: bad6da39-73c3-4f19-bd28-654d8302e96d
+		summarizeBy: none
+		sourceColumn: InternalComments
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column PickingCompletedWhen
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 54f30290-89ae-4914-a60a-62d3cd9eebdd
+		summarizeBy: none
+		sourceColumn: PickingCompletedWhen
+
+		variation Variation
+			isDefault
+			relationship: eda40889-d7e3-4a23-b0ed-db906f9c9437
+			defaultHierarchy: LocalDateTable_a625ff0f-0805-4a48-aaa9-51c33ea4b7f5.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastEditedBy
+		dataType: int64
+		formatString: 0
+		lineageTag: 0e45d24c-a39e-4c99-b206-cb4521be5fdb
+		summarizeBy: sum
+		sourceColumn: LastEditedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastEditedWhen
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8eb95a5f-12cd-4826-8d54-687fb69069b5
+		summarizeBy: none
+		sourceColumn: LastEditedWhen
+
+		variation Variation
+			isDefault
+			relationship: 8975ad4a-e0a1-4524-947f-e738e56764f4
+			defaultHierarchy: LocalDateTable_ee3f309b-e294-4289-94df-6a1323f95f6a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Sales Orders-d247b82e-390f-4e79-8a47-37535e978969' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("bielitetraining.database.windows.net"),
+				    WideWorldImporters = Source{[Name="WideWorldImporters"]}[Data],
+				    Sales_Orders = WideWorldImporters{[Schema="Sales",Item="Orders"]}[Data]
+				in
+				    Sales_Orders
+
+	annotation PBI_QueryRelationships = {"columnCount":16,"keyColumnNames":["OrderID"],"queryRelationships":[{"keyColumnCount":1,"keyColumn":4,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.People.{PersonID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":14,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.People.{PersonID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":3,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.People.{PersonID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":2,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.People.{PersonID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":1,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{CustomerID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Invoices.{OrderID,3}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{OrderID,1}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":5,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{OrderID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{BackorderOrderID,5}","KeyColumnCount":1}],"columnIdentities":["Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{OrderID,0}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{CustomerID,1}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{SalespersonPersonID,2}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{PickedByPersonID,3}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{ContactPersonID,4}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{BackorderOrderID,5}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{OrderDate,6}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{ExpectedDeliveryDate,7}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{CustomerPurchaseOrderNumber,8}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{IsUndersupplyBackordered,9}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{Comments,10}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{DeliveryInstructions,11}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{InternalComments,12}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{PickingCompletedWhen,13}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{LastEditedBy,14}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{LastEditedWhen,15}"],"ColumnCount":16,"KeyColumnNames":["OrderID"],"ColumnIdentities":["Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{OrderID,0}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{CustomerID,1}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{SalespersonPersonID,2}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{PickedByPersonID,3}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{ContactPersonID,4}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{BackorderOrderID,5}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{OrderDate,6}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{ExpectedDeliveryDate,7}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{CustomerPurchaseOrderNumber,8}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{IsUndersupplyBackordered,9}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{Comments,10}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{DeliveryInstructions,11}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{InternalComments,12}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{PickingCompletedWhen,13}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{LastEditedBy,14}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{LastEditedWhen,15}"],"RelationshipInfo":[{"keyColumnCount":1,"keyColumn":4,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.People.{PersonID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":14,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.People.{PersonID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":3,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.People.{PersonID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":2,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.People.{PersonID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":1,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{CustomerID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Invoices.{OrderID,3}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{OrderID,1}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":5,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{OrderID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{BackorderOrderID,5}","KeyColumnCount":1}]}
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

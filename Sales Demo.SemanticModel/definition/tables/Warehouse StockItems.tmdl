@@ -1,0 +1,258 @@
+table 'Warehouse StockItems'
+	lineageTag: 48e134c3-a209-436e-aa63-89300f8ef023
+
+	column StockItemID
+		dataType: int64
+		formatString: 0
+		lineageTag: 1bd226c4-20cf-42b0-9f1e-e755ca7bbc39
+		summarizeBy: none
+		sourceColumn: StockItemID
+
+		annotation SummarizationSetBy = Automatic
+
+	column StockItemName
+		dataType: string
+		lineageTag: 52888feb-ad9f-4c48-a6c5-120a16242762
+		summarizeBy: none
+		sourceColumn: StockItemName
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column SupplierID
+		dataType: int64
+		formatString: 0
+		lineageTag: c141610c-2149-4e54-ade9-aa225106d7f3
+		summarizeBy: count
+		sourceColumn: SupplierID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ColorID
+		dataType: int64
+		formatString: 0
+		lineageTag: e917d4f3-b6c9-47ab-960e-4b984143022c
+		summarizeBy: none
+		sourceColumn: ColorID
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitPackageID
+		dataType: int64
+		formatString: 0
+		lineageTag: 420dc25a-2867-4110-80f9-f8a57fe4610c
+		summarizeBy: count
+		sourceColumn: UnitPackageID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OuterPackageID
+		dataType: int64
+		formatString: 0
+		lineageTag: a92a12e3-25cf-4dca-9a87-56f36bc24ebd
+		summarizeBy: count
+		sourceColumn: OuterPackageID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Brand
+		dataType: string
+		lineageTag: 44124478-1595-4445-b38b-1a1803d341fb
+		summarizeBy: none
+		sourceColumn: Brand
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column Size
+		dataType: string
+		lineageTag: 27df82bd-bfc3-45c8-9411-a44b494c6a42
+		summarizeBy: none
+		sourceColumn: Size
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column LeadTimeDays
+		dataType: int64
+		formatString: 0
+		lineageTag: 6bc744b1-eaa7-41eb-95e5-dce13a926646
+		summarizeBy: sum
+		sourceColumn: LeadTimeDays
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuantityPerOuter
+		dataType: int64
+		formatString: 0
+		lineageTag: 43346698-a092-4ad4-9005-2ecc520d0e18
+		summarizeBy: sum
+		sourceColumn: QuantityPerOuter
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsChillerStock
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7ecc6707-ceff-4fa1-979f-72de2c18b5a5
+		summarizeBy: none
+		sourceColumn: IsChillerStock
+
+		annotation SummarizationSetBy = Automatic
+
+	column Barcode
+		dataType: string
+		lineageTag: 12a05e78-0e88-4969-8751-30b10d1d8979
+		summarizeBy: none
+		sourceColumn: Barcode
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column TaxRate
+		dataType: double
+		lineageTag: 0b72a445-62cf-4948-b45b-e9fe7d6b8269
+		summarizeBy: sum
+		sourceColumn: TaxRate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UnitPrice
+		dataType: double
+		lineageTag: a87edc8d-1ebb-45c6-a96d-ecd1be31d804
+		summarizeBy: sum
+		sourceColumn: UnitPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RecommendedRetailPrice
+		dataType: double
+		lineageTag: 7a8d28f3-45c6-48a6-8eab-363821f76555
+		summarizeBy: sum
+		sourceColumn: RecommendedRetailPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TypicalWeightPerUnit
+		dataType: double
+		lineageTag: b05ffe52-efb6-4878-9579-2ce8808cbed5
+		summarizeBy: sum
+		sourceColumn: TypicalWeightPerUnit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MarketingComments
+		dataType: string
+		lineageTag: 357bee07-56f8-45f9-930b-f640d219ecc0
+		summarizeBy: none
+		sourceColumn: MarketingComments
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column InternalComments
+		dataType: string
+		lineageTag: 58457649-30cc-4f08-9262-236bc5a39f4b
+		summarizeBy: none
+		sourceColumn: InternalComments
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column CustomFields
+		dataType: string
+		lineageTag: 29e0fca4-53af-4e9b-87be-0f5f247ae88c
+		summarizeBy: none
+		sourceColumn: CustomFields
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column Tags
+		dataType: string
+		lineageTag: e08b95c5-e4ae-4e8f-9b08-2393e03a83de
+		summarizeBy: none
+		sourceColumn: Tags
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column SearchDetails
+		dataType: string
+		lineageTag: 472567cf-0af3-43cd-accc-642c66d6bf3f
+		summarizeBy: none
+		sourceColumn: SearchDetails
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column LastEditedBy
+		dataType: int64
+		formatString: 0
+		lineageTag: e64de285-da52-4ee7-87bd-9384f654616a
+		summarizeBy: sum
+		sourceColumn: LastEditedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValidFrom
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c03d233f-b54d-4e27-8295-c914a9735f97
+		summarizeBy: none
+		sourceColumn: ValidFrom
+
+		variation Variation
+			isDefault
+			relationship: 7d5c50e2-2e43-42dc-be7e-e6f254801ce5
+			defaultHierarchy: LocalDateTable_56378af3-efc6-4b50-841f-99fab6c77023.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValidTo
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 11b15e13-b689-4a4a-8996-f866d493c2f4
+		summarizeBy: none
+		sourceColumn: ValidTo
+
+		variation Variation
+			isDefault
+			relationship: 985e2ac8-e9e4-49b5-ae95-f8eeb896070e
+			defaultHierarchy: LocalDateTable_f558f949-18c4-491e-8416-d9cdee62163e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Warehouse StockItems-87dd1b0f-5e7d-43fc-bd36-1d82b087f0d4' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("bielitetraining.database.windows.net"),
+				    WideWorldImporters = Source{[Name="WideWorldImporters"]}[Data],
+				    Warehouse_StockItems = WideWorldImporters{[Schema="Warehouse",Item="StockItems"]}[Data]
+				in
+				    Warehouse_StockItems
+
+	annotation PBI_QueryRelationships = {"columnCount":25,"keyColumnNames":["StockItemID"],"queryRelationships":[{"keyColumnCount":1,"keyColumn":22,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.People.{PersonID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Purchasing/Purchasing.PurchaseOrderLines.{StockItemID,2}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":2,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Purchasing/Purchasing.Suppliers.{SupplierID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.InvoiceLines.{StockItemID,2}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{StockItemID,2}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.SpecialDeals.{StockItemID,1}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":3,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.Colors.{ColorID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":5,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.PackageTypes.{PackageTypeID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":4,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.PackageTypes.{PackageTypeID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItemHoldings.{StockItemID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItemStockGroups.{StockItemID,1}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItemTransactions.{StockItemID,1}","KeyColumnCount":1}],"columnIdentities":["Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{StockItemID,0}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{StockItemName,1}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{SupplierID,2}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{ColorID,3}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{UnitPackageID,4}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{OuterPackageID,5}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{Brand,6}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{Size,7}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{LeadTimeDays,8}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{QuantityPerOuter,9}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{IsChillerStock,10}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{Barcode,11}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{TaxRate,12}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{UnitPrice,13}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{RecommendedRetailPrice,14}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{TypicalWeightPerUnit,15}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{MarketingComments,16}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{InternalComments,17}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{Photo,18}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{CustomFields,19}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{Tags,20}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{SearchDetails,21}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{LastEditedBy,22}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{ValidFrom,23}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{ValidTo,24}"],"ColumnCount":25,"KeyColumnNames":["StockItemID"],"ColumnIdentities":["Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{StockItemID,0}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{StockItemName,1}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{SupplierID,2}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{ColorID,3}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{UnitPackageID,4}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{OuterPackageID,5}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{Brand,6}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{Size,7}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{LeadTimeDays,8}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{QuantityPerOuter,9}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{IsChillerStock,10}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{Barcode,11}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{TaxRate,12}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{UnitPrice,13}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{RecommendedRetailPrice,14}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{TypicalWeightPerUnit,15}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{MarketingComments,16}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{InternalComments,17}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{Photo,18}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{CustomFields,19}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{Tags,20}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{SearchDetails,21}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{LastEditedBy,22}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{ValidFrom,23}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItems.{ValidTo,24}"],"RelationshipInfo":[{"keyColumnCount":1,"keyColumn":22,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.People.{PersonID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Purchasing/Purchasing.PurchaseOrderLines.{StockItemID,2}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":2,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Purchasing/Purchasing.Suppliers.{SupplierID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.InvoiceLines.{StockItemID,2}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.OrderLines.{StockItemID,2}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.SpecialDeals.{StockItemID,1}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":3,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.Colors.{ColorID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":5,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.PackageTypes.{PackageTypeID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":4,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.PackageTypes.{PackageTypeID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItemHoldings.{StockItemID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItemStockGroups.{StockItemID,1}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItemTransactions.{StockItemID,1}","KeyColumnCount":1}]}
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

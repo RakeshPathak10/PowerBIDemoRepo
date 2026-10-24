@@ -1,0 +1,96 @@
+table Date
+	lineageTag: 828db82c-8bc6-48d2-bf1a-3610ae0be137
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: 99098eca-e6eb-4601-ab47-56eb72bfa3d0
+		summarizeBy: sum
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 698bc112-57c9-423c-9688-caa283757b0f
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 947b712d-5921-495e-b793-73756af52535
+			defaultHierarchy: LocalDateTable_0ee808ef-f0f0-40c7-a8b3-41dcf65de916.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Start of Week'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: aee0e3d2-6339-42a6-b7d2-9d61befdbd68
+		summarizeBy: none
+		sourceColumn: Start of Week
+
+		variation Variation
+			isDefault
+			relationship: b59a6c2f-f50f-490b-bedd-17fafe978a22
+			defaultHierarchy: LocalDateTable_271cf411-aa3d-42af-b8fe-561b4ca363c2.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Day of Week'
+		dataType: string
+		lineageTag: cc8501fb-4526-4d2c-b0e9-babf098198a8
+		summarizeBy: none
+		sourceColumn: Day of Week
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column Month
+		dataType: string
+		lineageTag: a057e516-caf7-42c3-bc50-f0bd1ab05ebd
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 96ef6f61-f88c-42ca-984c-bc0e4cd352a3
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Date-5524a670-31a3-4ca3-84e6-05d4eaf8ee13 = m
+		mode: import
+		source =
+				let
+				    Source = List.Dates(#date(2013,1,1), Duration.Days(DateTime.Date(DateTime.FixedLocalNow()) - #date(2013,1,1)), #duration(1,0,0,0)),
+				    #"Converted to Table" = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+				    #"Renamed Columns" = Table.RenameColumns(#"Converted to Table",{{"Column1", "Date"}}),
+				    #"Added Index" = Table.AddIndexColumn(#"Renamed Columns", "Index", 1, 1),
+				    #"Added Custom" = Table.AddColumn(#"Added Index", "Start of Week", each Date.StartOfWeek([Date], 1)),
+				    #"Added Custom1" = Table.AddColumn(#"Added Custom", "Day of Week", each Date.DayOfWeekName([Date])),
+				    #"Added Custom2" = Table.AddColumn(#"Added Custom1", "Month", each Date.MonthName([Date])),
+				    #"Added Custom3" = Table.AddColumn(#"Added Custom2", "Year", each Date.Year([Date])),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom3",{{"Date", type date}, {"Index", Int64.Type}, {"Start of Week", type date}, {"Day of Week", type text}, {"Month", type text}, {"Year", Int64.Type}}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Changed Type",{"Index", "Date", "Start of Week", "Day of Week", "Month", "Year"})
+				in
+				    #"Reordered Columns"
+
+	annotation PBI_QueryRelationships = {"columnCount":6,"keyColumnNames":[],"queryRelationships":[],"columnIdentities":["Section1/Date/Changed Type.{Index,1}","Section1/Date/Changed Type.{Date,0}","Section1/Date/Changed Type.{Start of Week,2}","Section1/Date/Changed Type.{Day of Week,3}","Section1/Date/Changed Type.{Month,4}","Section1/Date/Changed Type.{Year,5}"],"ColumnCount":6,"KeyColumnNames":[],"ColumnIdentities":["Section1/Date/Changed Type.{Index,1}","Section1/Date/Changed Type.{Date,0}","Section1/Date/Changed Type.{Start of Week,2}","Section1/Date/Changed Type.{Day of Week,3}","Section1/Date/Changed Type.{Month,4}","Section1/Date/Changed Type.{Year,5}"],"RelationshipInfo":[]}
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

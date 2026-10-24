@@ -1,0 +1,331 @@
+table 'Sales Customers'
+	lineageTag: 56dca979-217d-4fe8-9e3c-ae183a82c55c
+
+	column CustomerID
+		dataType: int64
+		formatString: 0
+		lineageTag: 8369a00c-a070-4d81-ba01-858cba9a75fb
+		summarizeBy: none
+		sourceColumn: CustomerID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerName
+		dataType: string
+		lineageTag: 2ffaeff3-4049-4496-9fe4-950116e1e9e6
+		summarizeBy: none
+		sourceColumn: CustomerName
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column BillToCustomerID
+		dataType: int64
+		formatString: 0
+		lineageTag: b6dd3b6f-200b-408a-896a-d5b3769aff0e
+		summarizeBy: count
+		sourceColumn: BillToCustomerID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerCategoryID
+		dataType: int64
+		formatString: 0
+		lineageTag: 73411980-0698-4c62-897d-33e62a80b101
+		summarizeBy: none
+		sourceColumn: CustomerCategoryID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyingGroupID
+		dataType: int64
+		formatString: 0
+		lineageTag: ccd2b572-7d35-4e93-864f-7dc161ae6766
+		summarizeBy: count
+		sourceColumn: BuyingGroupID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrimaryContactPersonID
+		dataType: int64
+		formatString: 0
+		lineageTag: 291a40f3-6542-4048-930e-1af960b7e8ee
+		summarizeBy: count
+		sourceColumn: PrimaryContactPersonID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AlternateContactPersonID
+		dataType: int64
+		formatString: 0
+		lineageTag: 2fb22076-a008-409d-b030-b179f236ab85
+		summarizeBy: count
+		sourceColumn: AlternateContactPersonID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DeliveryMethodID
+		dataType: int64
+		formatString: 0
+		lineageTag: 1fe3214c-41fb-4156-8e15-4880ce2ca16c
+		summarizeBy: count
+		sourceColumn: DeliveryMethodID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DeliveryCityID
+		dataType: int64
+		formatString: 0
+		lineageTag: 54a97410-d479-4038-9768-a33d748141f6
+		summarizeBy: none
+		sourceColumn: DeliveryCityID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PostalCityID
+		dataType: int64
+		formatString: 0
+		lineageTag: f40dc79f-24e4-43ae-8555-d86fdab7224f
+		summarizeBy: count
+		sourceColumn: PostalCityID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreditLimit
+		dataType: double
+		lineageTag: 9e7ae59e-4fc4-4103-aecb-b474c90aa215
+		summarizeBy: sum
+		sourceColumn: CreditLimit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AccountOpenedDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 46fbfd2d-55b1-4538-b1e6-3ae19e203e6f
+		summarizeBy: none
+		sourceColumn: AccountOpenedDate
+
+		variation Variation
+			isDefault
+			relationship: 216407dd-6b2c-4f46-a341-6d84a18b2b3f
+			defaultHierarchy: LocalDateTable_b7443634-2331-403f-8ea7-32a3e7afbb4c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column StandardDiscountPercentage
+		dataType: double
+		lineageTag: d54d92b0-aa66-41b0-94be-39faf5ff44c8
+		summarizeBy: sum
+		sourceColumn: StandardDiscountPercentage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IsStatementSent
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4f8d591e-af62-4b64-8c7c-8278caa873f1
+		summarizeBy: none
+		sourceColumn: IsStatementSent
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsOnCreditHold
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 916e81fc-e743-4dde-8554-266f28ab012e
+		summarizeBy: none
+		sourceColumn: IsOnCreditHold
+
+		annotation SummarizationSetBy = Automatic
+
+	column PaymentDays
+		dataType: int64
+		formatString: 0
+		lineageTag: 5f00e51a-b0fc-4c9c-a311-8767d62e71d3
+		summarizeBy: sum
+		sourceColumn: PaymentDays
+
+		annotation SummarizationSetBy = Automatic
+
+	column PhoneNumber
+		dataType: string
+		lineageTag: 787aca71-cb64-402b-b7b7-443d33dfa41c
+		summarizeBy: none
+		sourceColumn: PhoneNumber
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column FaxNumber
+		dataType: string
+		lineageTag: 02544782-f02a-4a11-917c-df9e4d333802
+		summarizeBy: none
+		sourceColumn: FaxNumber
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column DeliveryRun
+		dataType: string
+		lineageTag: c30c8ac0-d6a5-40ec-880e-1092efe97942
+		summarizeBy: none
+		sourceColumn: DeliveryRun
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column RunPosition
+		dataType: string
+		lineageTag: f3ddb910-9e7f-4a29-a629-1fb3b9c163c5
+		summarizeBy: none
+		sourceColumn: RunPosition
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column WebsiteURL
+		dataType: string
+		lineageTag: b214ac11-0740-4ff3-b4fb-b3c1ba886a0c
+		dataCategory: WebUrl
+		summarizeBy: none
+		sourceColumn: WebsiteURL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column DeliveryAddressLine1
+		dataType: string
+		lineageTag: 9ec96c08-9004-4893-88cb-89146ab86deb
+		summarizeBy: none
+		sourceColumn: DeliveryAddressLine1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column DeliveryAddressLine2
+		dataType: string
+		lineageTag: 1633682e-d038-47ac-8f22-d7cd011f8de5
+		summarizeBy: none
+		sourceColumn: DeliveryAddressLine2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column DeliveryPostalCode
+		dataType: string
+		lineageTag: a6c05d08-4b5e-4cc3-8991-9b877e227731
+		summarizeBy: none
+		sourceColumn: DeliveryPostalCode
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column DeliveryLocation
+		dataType: string
+		lineageTag: 1623ac45-fd72-442c-b25a-7a3d1a299713
+		summarizeBy: none
+		sourceColumn: DeliveryLocation
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column PostalAddressLine1
+		dataType: string
+		lineageTag: 0882729f-d390-4541-86f8-8c28a9fa9f07
+		summarizeBy: none
+		sourceColumn: PostalAddressLine1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column PostalAddressLine2
+		dataType: string
+		lineageTag: 9daf81d1-21c7-4ca6-a4f2-75075fd18dbe
+		summarizeBy: none
+		sourceColumn: PostalAddressLine2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column PostalPostalCode
+		dataType: string
+		lineageTag: 8a75ccdd-bdcc-49d2-ad44-ddad8ea98bee
+		summarizeBy: none
+		sourceColumn: PostalPostalCode
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column LastEditedBy
+		dataType: int64
+		formatString: 0
+		lineageTag: 7bd31750-7310-42f1-af1e-981d22285a26
+		summarizeBy: sum
+		sourceColumn: LastEditedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValidFrom
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: efb97fbb-7a37-40b2-961c-62e9ac98ead1
+		summarizeBy: none
+		sourceColumn: ValidFrom
+
+		variation Variation
+			isDefault
+			relationship: 83e6360d-3ad1-4c85-ac73-c9c48cc1c319
+			defaultHierarchy: LocalDateTable_43c130d1-1f02-43c8-bcbc-32fe14a41a88.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValidTo
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a23c554f-879a-4dfd-8739-430133e24209
+		summarizeBy: none
+		sourceColumn: ValidTo
+
+		variation Variation
+			isDefault
+			relationship: 4edf8293-bc9b-491b-89d7-2c15afc88427
+			defaultHierarchy: LocalDateTable_91b661f5-3dc9-41a9-8501-68f2dd5cd02d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Sales Customers-dd4e063b-3888-4c86-a9da-132782ea01aa' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("bielitetraining.database.windows.net"),
+				    WideWorldImporters = Source{[Name="WideWorldImporters"]}[Data],
+				    Sales_Customers = WideWorldImporters{[Schema="Sales",Item="Customers"]}[Data]
+				in
+				    Sales_Customers
+
+	annotation PBI_QueryRelationships = {"columnCount":31,"keyColumnNames":["CustomerID"],"queryRelationships":[{"keyColumnCount":1,"keyColumn":8,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Cities.{CityID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":9,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Cities.{CityID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":7,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.DeliveryMethods.{DeliveryMethodID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":6,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.People.{PersonID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":28,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.People.{PersonID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":5,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.People.{PersonID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":4,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.BuyingGroups.{BuyingGroupID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":3,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.CustomerCategories.{CustomerCategoryID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.CustomerTransactions.{CustomerID,1}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":2,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{CustomerID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{BillToCustomerID,2}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Invoices.{BillToCustomerID,2}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Invoices.{CustomerID,1}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{CustomerID,1}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.SpecialDeals.{CustomerID,2}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItemTransactions.{CustomerID,3}","KeyColumnCount":1}],"columnIdentities":["Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{CustomerID,0}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{CustomerName,1}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{BillToCustomerID,2}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{CustomerCategoryID,3}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{BuyingGroupID,4}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{PrimaryContactPersonID,5}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{AlternateContactPersonID,6}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{DeliveryMethodID,7}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{DeliveryCityID,8}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{PostalCityID,9}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{CreditLimit,10}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{AccountOpenedDate,11}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{StandardDiscountPercentage,12}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{IsStatementSent,13}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{IsOnCreditHold,14}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{PaymentDays,15}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{PhoneNumber,16}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{FaxNumber,17}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{DeliveryRun,18}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{RunPosition,19}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{WebsiteURL,20}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{DeliveryAddressLine1,21}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{DeliveryAddressLine2,22}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{DeliveryPostalCode,23}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{DeliveryLocation,24}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{PostalAddressLine1,25}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{PostalAddressLine2,26}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{PostalPostalCode,27}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{LastEditedBy,28}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{ValidFrom,29}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{ValidTo,30}"],"ColumnCount":31,"KeyColumnNames":["CustomerID"],"ColumnIdentities":["Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{CustomerID,0}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{CustomerName,1}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{BillToCustomerID,2}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{CustomerCategoryID,3}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{BuyingGroupID,4}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{PrimaryContactPersonID,5}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{AlternateContactPersonID,6}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{DeliveryMethodID,7}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{DeliveryCityID,8}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{PostalCityID,9}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{CreditLimit,10}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{AccountOpenedDate,11}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{StandardDiscountPercentage,12}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{IsStatementSent,13}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{IsOnCreditHold,14}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{PaymentDays,15}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{PhoneNumber,16}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{FaxNumber,17}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{DeliveryRun,18}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{RunPosition,19}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{WebsiteURL,20}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{DeliveryAddressLine1,21}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{DeliveryAddressLine2,22}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{DeliveryPostalCode,23}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{DeliveryLocation,24}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{PostalAddressLine1,25}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{PostalAddressLine2,26}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{PostalPostalCode,27}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{LastEditedBy,28}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{ValidFrom,29}","Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{ValidTo,30}"],"RelationshipInfo":[{"keyColumnCount":1,"keyColumn":8,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Cities.{CityID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":9,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.Cities.{CityID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":7,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.DeliveryMethods.{DeliveryMethodID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":6,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.People.{PersonID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":28,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.People.{PersonID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":5,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Application/Application.People.{PersonID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":4,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.BuyingGroups.{BuyingGroupID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":3,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.CustomerCategories.{CustomerCategoryID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.CustomerTransactions.{CustomerID,1}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":2,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{CustomerID,0}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Customers.{BillToCustomerID,2}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Invoices.{BillToCustomerID,2}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Invoices.{CustomerID,1}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.Orders.{CustomerID,1}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Sales/Sales.SpecialDeals.{CustomerID,2}","KeyColumnCount":1},{"keyColumnCount":1,"keyColumn":0,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/bielitetraining.database.windows.net;WideWorldImporters/Warehouse/Warehouse.StockItemTransactions.{CustomerID,3}","KeyColumnCount":1}]}
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
