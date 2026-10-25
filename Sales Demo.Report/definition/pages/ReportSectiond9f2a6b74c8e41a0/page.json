@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "ReportSectiond9f2a6b74c8e41a0",
+  "displayName": "Executive Summary",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "pageBinding": {
+    "name": "e9e57d51aa9588146516",
+    "type": "Default",
+    "parameters": []
+  },
+  "visualInteractions": [
+    {
+      "source": "8f87da7151b18845736c",
+      "target": "6375c134ecdac9a88d27",
+      "type": "NoFilter"
+    },
+    {
+      "source": "8f87da7151b18845736c",
+      "target": "a0870b4150b8507f7708",
+      "type": "NoFilter"
+    },
+    {
+      "source": "8f87da7151b18845736c",
+      "target": "5606a36f079bd008008e",
+      "type": "DataFilter"
+    },
+    {
+      "source": "8f87da7151b18845736c",
+      "target": "f40bb4ac40df8f6daa86",
+      "type": "NoFilter"
+    },
+    {
+      "source": "8f87da7151b18845736c",
+      "target": "a9fac60500268622846c",
+      "type": "NoFilter"
+    }
+  ]
+}
