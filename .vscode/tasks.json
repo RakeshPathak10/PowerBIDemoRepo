@@ -29,7 +29,8 @@
                 "-NoProfile",
                 "-File",
                 "${env:USERPROFILE}\\PowerBIReviewGate\\Start.ps1",
-                "-Login"
+                "-Login",
+                "-DeviceCode"
             ],
             "problemMatcher": [],
             "presentation": {
